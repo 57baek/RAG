@@ -1,0 +1,20 @@
+pypdf
+
+# The core LangChain package provides a lot of basic tools and components for integrating language models into applications.
+langchain
+
+# This is an additional package that offers community-contributed modules, which may include new document loaders, vector store integrations, etc. 
+# For example, loaders for specific document types (like PyPDFDirectoryLoader) are part of langchain-community.
+langchain-community
+
+langchain-ollama
+
+langchain_chroma
+
+chromadb 
+
+pytest
+
+boto3
+
+# python-dotenv

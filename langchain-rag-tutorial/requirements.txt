@@ -1,0 +1,36 @@
+# This library helps in reading environment variables from a .env file. 
+# It’s useful when you have sensitive information, like API keys or configurations, that you don’t want to hardcode in your scripts.
+python-dotenv==1.0.1 
+
+# LangChain is a framework to develop applications using language models (like GPT). 
+# This specific version was likely chosen because it’s stable and works well with the other dependencies.
+langchain==0.2.2
+
+# This is the community extension of LangChain that provides additional features and support for various integrations.
+langchain-community==0.2.3
+
+# This package provides integration with OpenAI models (like GPT, DALL-E, etc.) in LangChain.
+langchain-openai==0.1.8 
+
+# The unstructured library is used for document parsing and transformation. 
+# It can extract content from different file formats (like PDFs, Word files, etc.).
+unstructured==0.14.4 
+
+# This is used by chromadb for model execution. 
+# ONNX Runtime is needed to run models that are converted to the Open Neural Network Exchange (ONNX) format, which can be used for efficient machine learning inference.
+onnxruntime==1.17.1 # chromadb dependency: on Mac use `conda install onnxruntime -c conda-forge`
+
+# ChromaDB is used for vector storage and similarity searches. 
+# It works with embeddings to perform fast nearest-neighbor searches.
+chromadb==0.5.0
+
+# This library is used to interact with OpenAI’s APIs, like GPT models, for generating embeddings or performing other NLP tasks. 
+openai==1.55.3
+httpx==0.27.2
+
+# tiktoken is the library used for tokenizing text, especially for OpenAI models. It is essential for working with embeddings or language models.
+tiktoken==0.7.0
+
+# The [md] part specifies optional extra dependencies for Markdown support. 
+# Installing the core unstructured package plus the extra libraries required to handle Markdown documents specifically (e.g., mistune, commonmark, etc.).
+unstructured[md]
