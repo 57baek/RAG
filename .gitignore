@@ -22,10 +22,10 @@ chroma/
 *.out
 *.err
 
-# Jupyter Notebook checkpoints (if using Jupyter)
+# Jupyter Notebook checkpoints 
 .ipynb_checkpoints/
 
-# VSCode settings (if using VSCode)
+# VSCode settings 
 .vscode/
 
 # JetBrains IDE settings (if using PyCharm)
