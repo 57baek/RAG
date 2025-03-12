@@ -1,5 +1,6 @@
 # rag-tutorial-v2
 
+This code is written by https://github.com/pixegami
 
 import openai
 from dotenv import load_dotenv

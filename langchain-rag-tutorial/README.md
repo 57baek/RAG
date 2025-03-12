@@ -1,5 +1,7 @@
 # Langchain RAG Tutorial
 
+This code is written by https://github.com/pixegami
+
 ## Install dependencies
 
 1. Do the following before installing the dependencies found in `requirements.txt` file because of current challenges installing `onnxruntime` through `pip install onnxruntime`. 
