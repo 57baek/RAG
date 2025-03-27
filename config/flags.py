@@ -15,7 +15,7 @@ def cli():
 def create(reset):
     """Create or reset the vector database."""
     if reset:
-        print("✨ Clearing Database")
+        print("🧹 Clearing Database")
         reset_chroma_database()
     print("✅ Database created (or updated)")
 
