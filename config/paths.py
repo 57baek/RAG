@@ -9,4 +9,5 @@ FEEDBACK_DIR_PATH = "feedback"
 FEEDBACK_PATH = "feedback/feedback.json"
 
 # Path to the file record JSON file
+RECORD_DIR_PATH = "fileindex"
 RECORD_PATH = "fileindex/fileindex.json"

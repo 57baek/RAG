@@ -16,14 +16,14 @@ def cli():
 @cli.command()
 @click.argument("feedback_text")
 def feedback(feedback_text):
-    """Store user feedback for improving future responses."""
+    """📚 Store user feedback for improving future responses."""
     append_feedback(feedback_text)
 
 
 @cli.command()
 @click.argument("query_text")
 def ask(query_text):
-    """❓ Ask a question and get an AI-generated answer from medical papers."""
+    """🙋 Ask a question and get an AI-generated answer from medical papers."""
     if not os.path.exists(CHROMA_PATH):
         print("🚨 Chroma vector database not found. Running vectorization pipeline...")
         vectorization_pipeline()
@@ -35,7 +35,7 @@ def ask(query_text):
 @click.option("--em", is_flag=True, help="Reset embedding vector DB.")
 @click.option("--fb", is_flag=True, help="Reset feedback DB.")
 def reset(all, em, fb):
-    """♻️ Flexible reset: embedding DB, feedback DB, or both."""
+    """🧹 Flexible reset - embedding DB, feedback DB, or both."""
     if all:
         reset_db.reset_all_databases()
     elif em:
