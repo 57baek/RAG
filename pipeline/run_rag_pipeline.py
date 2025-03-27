@@ -11,8 +11,8 @@ def run_rag_pipeline(query_text: str) -> str:
     """Run the full Retrieval-Augmented Generation (RAG) pipeline on the query."""
     results = load_relevant_documents_with_top_k(query_text)
 
-    if not results or results[0][1] < 1.0:
-        print("⚠️ No sufficiently relevant documents found.")
+    if not results or results[0][1] < 0.7:
+        print("⛔️ No sufficiently relevant documents found.")
         return
 
     prompt = format_prompt_from_documents(results, query_text)
