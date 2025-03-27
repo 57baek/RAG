@@ -1,0 +1,35 @@
+# 
+click
+
+# Core LangChain framework for building LLM-powered applications
+langchain
+
+# Community-contributed modules for LangChain (e.g., additional document loaders like PyPDFDirectoryLoader)
+langchain-community
+
+# Integration with local LLMs through Ollama
+langchain-ollama
+
+# Integration with local LLMs through openai
+langchain-openai
+
+# Official Chroma vector store package for LangChain (recommended over deprecated alternatives)
+langchain_chroma
+
+# Underlying ChromaDB package for local vector database management
+chromadb
+
+# PDF parsing and reading
+pypdf
+
+# Load environment variables from .env files (e.g., API keys)
+python-dotenv
+
+# Amazon Web Services SDK for Python (used if accessing data via S3 or other AWS services)
+#boto3
+
+# Testing framework for writing and running test cases
+pytest
+
+# Jupyter kernel for running Python code in Jupyter notebooks
+ipykernel

@@ -28,16 +28,35 @@ In a world overwhelmed by information, the challenge is not ignorance — it's e
 ## 🛠️ Project Structure
 
 ```
-📁 rag-tutorial/
-├── chroma/                       # Local vector DB storage
-├── data/                         # Raw documents (PDFs, Markdown, etc.)
-├── utils/                        # Helper modules
-├── .env                          # API keys and credentials
-├── requirements.txt              # All dependencies
-├── get_embedding_function.py     # Configurable embedding function
-├── populate_database.py          # Loads documents, chunks them, and populates ChromaDB
-├── query_data.py                 # Accepts user queries and returns generated answers
-```
+📁 medical-rag-chatbot/              # Root project directory
+
+├── data/                            # 📚 Raw data files
+│   └──                              # Includes downloaded papers, PDFs, markdown files, etc.
+├── docs/                            # 📄 Project documentation
+│   └── architecture.md              # Diagrams, flowcharts, and planning notes
+├── models/                          # 🧠 Model files or configurations
+│   └── config.yaml                  # (Optional) Hyperparameters or fine-tuned model weights
+├── pipeline/                        # 🔁 Core RAG logic
+│   ├── rag_engine.py                # Main RAG flow: retrieval + generation
+│   ├── retrieval.py                 # Handles embedding + vector search
+│   └── reinforcement.py             # Feedback system: user preference memory
+├── scripts/                         # ⚙️ CLI-accessible tools
+│   ├── populate_database.py         # Preprocess + embed documents into ChromaDB
+│   └── query_data.py                # Run queries from the command line
+├── utils/                           # 🧰 Utility functions
+│   ├── io_helpers.py                # File reading/writing helpers
+│   └── logging_config.py            # Custom logging formatter/setup
+├── tests/                           # ✅ Unit & integration tests
+│   ├── test_pipeline.py             # Tests for RAG logic
+│   └── test_utils.py                # Tests for helper functions
+├── config/                          # ⚙️ Configs for paths, prompts, envs
+│   ├── constants.py                 # CHROMA_PATH, DATA_PATH, etc.
+│   └── prompts.py                   # Stores your reusable prompt templates
+├── .env                             # 🔐 API keys and secrets (excluded from Git)
+├── .gitignore                       # 🚫 Git exclusions (e.g., .venv/, .pyc files)
+├── README.md                        # 📝 Project overview and how to use it
+├── requirements.txt                 # 📦 Python dependencies
+└── main.py                          # 🚀 Entry point to run the whole pipeline
 
 ---
 
