@@ -1,14 +1,19 @@
 PROMPT_TEMPLATE = """
-Answer the question based only on the following context and the following user feedback:
+Answer the question below based only on the following context and the following user feedback:
+
+---
 
 Context:
 {context}
 
+---
 
+Feedback:
+{feedback}
 
 ---
 
-Answer the question based on the context and feedback above: {question}
-"""
+Question:
+{question}
 
-# User Feedback: {feedback}
+"""

@@ -5,7 +5,8 @@ CHROMA_PATH = "chroma"
 DATA_PATH = "data"
 
 # Path to the feedback database directory
-FEEDBACK_PATH = "feedback"
+FEEDBACK_DIR_PATH = "feedback"
+FEEDBACK_PATH = "feedback/feedback.json"
 
 # Path to the file record JSON file
-RECORD_FILE = "indexed_files.json"
+RECORD_PATH = "fileindex/fileindex.json"

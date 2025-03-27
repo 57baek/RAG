@@ -1,5 +1,6 @@
 # Project files
 chroma/
+feedback/
 data/*
 indexed_files.json
 
