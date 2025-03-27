@@ -1,5 +1,7 @@
-# Chroma
-chroma/*
+# Project files
+chroma/
+data/*
+indexed_files.json
 
 # MacOS
 .DS_Store
