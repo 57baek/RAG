@@ -1,11 +1,11 @@
 import click
 import os
 from config.paths import CHROMA_PATH
-from pipeline.run_rag_pipeline import run_rag_pipeline
+from pipeline.rag_pipeline import rag_pipeline
 from pipeline.vectorization_pipeline import vectorization_pipeline
-from pipeline.autoupdate_db import index_new_documents_to_chroma
+from pipeline.autoupdate_database import index_new_documents_to_chroma
 from pipeline.feedback_pipeline import append_feedback
-from pipeline import reset_db
+from pipeline import reset_database
 
 
 @click.group()
@@ -32,7 +32,7 @@ def ask(query_text):
         print("🔄 Checking for new or updated PDFs...")
         index_new_documents_to_chroma()
 
-    run_rag_pipeline(query_text)
+    rag_pipeline(query_text)
 
 
 @cli.command()
@@ -50,16 +50,12 @@ def feedback(feedback_text):
 def reset(all, em, fb, fi):
     """🧹 Flexible reset: embedding DB, feedback DB, or file index."""
     if all:
-        reset_db.reset_all_databases()
+        reset_database.reset_all_databases()
     elif em:
-        reset_db.reset_embedding_database()
+        reset_database.reset_embedding_database()
     elif fb:
-        reset_db.reset_feedback_database()
+        reset_database.reset_feedback_database()
     elif fi:
-        reset_db.reset_fileindex_database()
+        reset_database.reset_fileindex_database()
     else:
         print("⚠️ Please specify what to reset. Use --all or a specific DB flag.")
-
-
-if __name__ == "__main__":
-    cli()

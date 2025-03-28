@@ -6,12 +6,6 @@ from models.embedding_model import get_embedding_model
 from config.paths import DATA_PATH, CHROMA_PATH
 
 
-def vectorization_pipeline():
-    documents = load_pdfs_from_directory()
-    chunks = split_documents_into_chunks(documents)
-    add_chunks_to_chroma(chunks)
-
-
 def load_pdfs_from_directory() -> list[Document]:
     """Load PDF documents from the data directory."""
     loader = PyPDFDirectoryLoader(DATA_PATH)
@@ -69,3 +63,9 @@ def add_chunks_to_chroma(chunks: list[Document]):
         db.add_documents(new_chunks, ids=new_chunk_ids)
     else:
         print("✅ No new documents to add.")
+
+
+def vectorization_pipeline():
+    documents = load_pdfs_from_directory()
+    chunks = split_documents_into_chunks(documents)
+    add_chunks_to_chroma(chunks)
