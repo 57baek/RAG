@@ -2,8 +2,9 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from langchain_chroma import Chroma
-from models.embedding_model import get_embedding_model
-from config.paths import DATA_PATH, CHROMA_PATH
+
+from ..configs.paths import DATA_PATH, CHROMA_PATH
+from ..models.embedding_model import get_embedding_model
 
 
 def load_pdfs_from_directory() -> list[Document]:

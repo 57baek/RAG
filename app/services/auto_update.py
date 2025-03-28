@@ -2,8 +2,9 @@ import os
 import json
 import hashlib
 from langchain_community.document_loaders import PyPDFDirectoryLoader
-from pipeline import vectorization_pipeline
-from config.paths import DATA_PATH, FILEINDEX_PATH
+
+from ..configs.paths import DATA_PATH, FILEINDEX_PATH
+from ..core import vectorization
 
 
 def generate_file_hash(filepath: str) -> str:
@@ -72,7 +73,7 @@ def index_new_documents_to_chroma():
         print("⚠️ No valid content found in the changed documents.")
         return
 
-    chunks = vectorization_pipeline.split_documents_into_chunks(filtered_docs)
-    vectorization_pipeline.add_chunks_to_chroma(chunks)
+    chunks = vectorization.split_documents_into_chunks(filtered_docs)
+    vectorization.add_chunks_to_chroma(chunks)
 
     print("✅ Successfully added new documents to Chroma vector database.")

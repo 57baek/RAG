@@ -1,6 +1,7 @@
 import os
 import shutil
-from config.paths import CHROMA_PATH, FEEDBACK_PATH, FILEINDEX_PATH
+
+from ..configs.paths import CHROMA_PATH, FEEDBACK_PATH, FILEINDEX_PATH
 
 
 def reset_embedding_database():

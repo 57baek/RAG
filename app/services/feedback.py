@@ -1,6 +1,7 @@
 import os
 import json
-from config.paths import FEEDBACK_PATH
+
+from ..configs.paths import FEEDBACK_PATH
 
 
 def ensure_feedback_file_exists():

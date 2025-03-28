@@ -1,11 +1,12 @@
 import click
 import os
-from config.paths import CHROMA_PATH
-from pipeline.rag_pipeline import rag_pipeline
-from pipeline.vectorization_pipeline import vectorization_pipeline
-from pipeline.autoupdate_database import index_new_documents_to_chroma
-from pipeline.feedback_pipeline import append_feedback
-from pipeline import reset_database
+
+from ..configs.paths import CHROMA_PATH
+from ..core.rag import rag_pipeline
+from ..core.vectorization import vectorization_pipeline
+from ..services.auto_update import index_new_documents_to_chroma
+from ..services.feedback import append_feedback
+from ..services import reset
 
 
 @click.group()
@@ -50,12 +51,12 @@ def feedback(feedback_text):
 def reset(all, em, fb, fi):
     """🧹 Flexible reset: embedding DB, feedback DB, or file index."""
     if all:
-        reset_database.reset_all_databases()
+        reset.reset_all_databases()
     elif em:
-        reset_database.reset_embedding_database()
+        reset.reset_embedding_database()
     elif fb:
-        reset_database.reset_feedback_database()
+        reset.reset_feedback_database()
     elif fi:
-        reset_database.reset_fileindex_database()
+        reset.reset_fileindex_database()
     else:
         print("⚠️ Please specify what to reset. Use --all or a specific DB flag.")

@@ -1,10 +1,11 @@
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
-from models.chatting_model import get_chatting_model
-from models.embedding_model import get_embedding_model
-from pipeline.feedback_pipeline import load_all_feedback
-from config.prompts import PROMPT_TEMPLATE
-from config.paths import CHROMA_PATH
+
+from ..configs.prompts import PROMPT_TEMPLATE
+from ..configs.paths import CHROMA_PATH
+from ..models.chatting_model import get_chatting_model
+from ..models.embedding_model import get_embedding_model
+from ..services.feedback import load_all_feedback
 
 
 def load_relevant_documents_with_top_k(query_text: str, k: int = 5):
