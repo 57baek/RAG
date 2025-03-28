@@ -11,7 +11,7 @@ def run_rag_pipeline(query_text: str) -> str:
     """Run the full Retrieval-Augmented Generation (RAG) pipeline on the query."""
     results = load_relevant_documents_with_top_k(query_text)
 
-    if not results or results[0][1] < 0.7:
+    if not results or results[0][1] < 0.75:
         print("⛔️ No sufficiently relevant documents found.")
         return
 
@@ -22,7 +22,7 @@ def run_rag_pipeline(query_text: str) -> str:
     return response
 
 
-def load_relevant_documents_with_top_k(query_text: str, k: int = 3):
+def load_relevant_documents_with_top_k(query_text: str, k: int = 5):
     """Search Chroma vector DB for top-k relevant documents based on the query."""
     db = Chroma(persist_directory=CHROMA_PATH, embedding_function=get_embedding_model())
     results = db.similarity_search_with_score(query_text, k=k)

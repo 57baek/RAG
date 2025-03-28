@@ -21,8 +21,8 @@ def load_pdfs_from_directory() -> list[Document]:
 def split_documents_into_chunks(documents: list[Document]) -> list[Document]:
     """Split documents into smaller overlapping chunks for embedding."""
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=80,
+        chunk_size=1000,
+        chunk_overlap=150,
         length_function=len,
         is_separator_regex=False,
     )
