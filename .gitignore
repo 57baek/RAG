@@ -1,8 +1,12 @@
 # Project files
 chroma/
 feedback/
-data/*
 indexed_files.json
+
+# Ignore all files in data/
+data/*
+# Except .gitkeep
+!data/.gitkeep
 
 # MacOS
 .DS_Store
