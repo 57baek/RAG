@@ -180,4 +180,20 @@ Question:
 
 ## 🔐 License
 
-This project is open for academic, research, and learning purposes. Contributions welcome!
+This project is open to everyone!
+Feel free to use, edit, copy, paste, share, or even taste it — seriously, go wild! 🍽️
+
+Still, Always Be Civil!
+
+---
+
+## 🙏 Acknowledgements
+
+- Prof. Mark Turner at Case Western Reserve University
+- Case Western Reserve University HPC
+- Pixegami (https://github.com/pixegami)
+- PubMed
+- OpenAI
+- Ollama
+- LangChain
+- ChromaDB
