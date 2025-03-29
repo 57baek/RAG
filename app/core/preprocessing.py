@@ -1,3 +1,4 @@
+import os
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
@@ -32,20 +33,20 @@ def assign_unique_chunk_ids(chunks: list[Document]) -> list[Document]:
     for chunk in chunks:
         source = chunk.metadata.get("source")
         page = chunk.metadata.get("page")
-        current_page_id = f"{source}:{page}"
+        current_page_id = f"[Source: {os.path.basename(source)} || Page: {page}"
 
         if current_page_id == last_page_id:
             current_chunk_index += 1
         else:
             current_chunk_index = 0
 
-        chunk.metadata["id"] = f"{current_page_id}:{current_chunk_index}"
+        chunk.metadata["id"] = f"{current_page_id} || Index: {current_chunk_index}]"
         last_page_id = current_page_id
 
     return chunks
 
 
-def add_chunks_to_chroma(chunks: list[Document]):
+def add_new_chunks_to_chroma(chunks: list[Document]):
     """Add new (non-duplicate) chunks to the Chroma vector database."""
     db = Chroma(
         persist_directory=CHROMA_PATH,
@@ -69,4 +70,4 @@ def add_chunks_to_chroma(chunks: list[Document]):
 def vectorization_pipeline():
     documents = load_pdfs_from_directory()
     chunks = split_documents_into_chunks(documents)
-    add_chunks_to_chroma(chunks)
+    add_new_chunks_to_chroma(chunks)
