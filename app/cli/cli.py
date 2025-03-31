@@ -6,7 +6,7 @@ from ..core.rag import rag_pipeline
 from ..core.preprocessing import vectorization_pipeline
 from ..services.auto_update import index_new_documents_to_chroma
 from ..services.feedback import append_feedback
-from ..services import reset
+from ..services import reset_database
 
 
 @click.group()
@@ -51,12 +51,12 @@ def feedback(feedback_text):
 def reset(all, em, fb, fi):
     """🧹 Flexible reset: embedding DB, feedback DB, or file index."""
     if all:
-        reset.reset_all_databases()
+        reset_database.reset_all_databases()
     elif em:
-        reset.reset_embedding_database()
+        reset_database.reset_embedding_database()
     elif fb:
-        reset.reset_feedback_database()
+        reset_database.reset_feedback_database()
     elif fi:
-        reset.reset_fileindex_database()
+        reset_database.reset_fileindex_database()
     else:
         print("⚠️ Please specify what to reset. Use --all or a specific DB flag.")

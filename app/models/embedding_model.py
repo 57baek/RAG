@@ -2,7 +2,7 @@ from langchain_openai import OpenAIEmbeddings
 # from langchain_community.embeddings.ollama import OllamaEmbeddings
 
 
-def get_embedding_model():
+def get_embedding_model_openai():
     return OpenAIEmbeddings(
         model="text-embedding-3-large"
         # Options: "text-embedding-ada-002", "text-embedding-3-small", "text-embedding-3-large"

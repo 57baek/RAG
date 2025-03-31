@@ -20,7 +20,7 @@ def append_feedback(feedback_text: str) -> None:
     feedback_list.append(feedback_text)
     with open(FEEDBACK_PATH, "w") as f:
         json.dump(feedback_list, f, indent=2)
-    print("Feedback saved.")
+    print("📖 Feedback saved.")
 
 
 def load_all_feedback() -> str:

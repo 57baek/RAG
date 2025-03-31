@@ -1,14 +1,17 @@
 from langchain.prompts import ChatPromptTemplate
 
-from ..configs.database import load_db
+from ..configs import parameters
+from ..configs.load_db import load_db_chroma
 from ..configs.prompts import PROMPT_TEMPLATE
-from ..models.chatting_model import get_chatting_model
+from ..models.chatting_model import get_chatting_model_openai
 from ..services.feedback import load_all_feedback
 
 
-def load_relevant_documents_with_top_k(query_text: str, k: int = 5):
+def load_relevant_documents_with_top_k(
+    query_text: str, k=parameters.top_k_relevant_documents
+):
     """Search Chroma vector DB for top-k relevant documents based on the query."""
-    db = load_db()
+    db = load_db_chroma()
     results = db.similarity_search_with_score(query_text, k=k)
     return results
 
@@ -26,7 +29,7 @@ def format_prompt_from_documents(results, query_text: str) -> str:
 
 def generate_llm_response(prompt: str) -> str:
     """Invoke the LLM with the generated prompt and return its response."""
-    model = get_chatting_model()
+    model = get_chatting_model_openai()
     response = model.invoke(prompt)
     return response.content
 
@@ -43,7 +46,7 @@ def rag_pipeline(query_text: str) -> str:
     """Run the full Retrieval-Augmented Generation (RAG) pipeline on the query."""
     results = load_relevant_documents_with_top_k(query_text)
 
-    if not results or results[0][1] < 0.75:
+    if not results or results[0][1] < parameters.cosine_similarity_value:
         print("⛔️ No sufficiently relevant documents found.")
         return
 

@@ -3,8 +3,9 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 
+from ..configs import parameters
 from ..configs.paths import DATA_PATH
-from ..configs.database import load_db
+from ..configs.load_db import load_db_chroma
 
 
 def load_pdfs_from_directory() -> list[Document]:
@@ -16,8 +17,8 @@ def load_pdfs_from_directory() -> list[Document]:
 def split_documents_into_chunks(documents: list[Document]) -> list[Document]:
     """Split documents into smaller overlapping chunks for embedding."""
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=150,
+        chunk_size=parameters.chunk_size,
+        chunk_overlap=parameters.chunk_overlap,
         length_function=len,
         is_separator_regex=False,
     )
@@ -47,7 +48,7 @@ def assign_unique_chunk_ids(chunks: list[Document]) -> list[Document]:
 
 def add_and_vectorize_new_chunks_to_db(chunks: list[Document]):
     """Add new (non-duplicate) chunks to the vector database."""
-    db = load_db()
+    db = load_db_chroma()
 
     chunks = assign_unique_chunk_ids(chunks)
     existing_ids = set(db.get(include=[])["ids"])

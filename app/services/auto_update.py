@@ -74,6 +74,6 @@ def index_new_documents_to_chroma():
         return
 
     chunks = preprocessing.split_documents_into_chunks(filtered_docs)
-    preprocessing.add_chunks_to_chroma(chunks)
+    preprocessing.add_and_vectorize_new_chunks_to_db(chunks)
 
     print("✅ Successfully added new documents to Chroma vector database.")
