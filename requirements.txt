@@ -1,4 +1,4 @@
-# 
+# CLI
 click
 
 # Core LangChain framework for building LLM-powered applications

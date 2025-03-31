@@ -5,6 +5,7 @@ indexed_files.json
 
 # Ignore all files in data/
 data/*
+
 # Except .gitkeep
 !data/.gitkeep
 

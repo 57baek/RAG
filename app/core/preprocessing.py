@@ -2,10 +2,9 @@ import os
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
-from langchain_chroma import Chroma
 
-from ..configs.paths import DATA_PATH, CHROMA_PATH
-from ..models.embedding_model import get_embedding_model
+from ..configs.paths import DATA_PATH
+from ..configs.database import load_db
 
 
 def load_pdfs_from_directory() -> list[Document]:
@@ -46,12 +45,9 @@ def assign_unique_chunk_ids(chunks: list[Document]) -> list[Document]:
     return chunks
 
 
-def add_new_chunks_to_chroma(chunks: list[Document]):
-    """Add new (non-duplicate) chunks to the Chroma vector database."""
-    db = Chroma(
-        persist_directory=CHROMA_PATH,
-        embedding_function=get_embedding_model(),
-    )
+def add_and_vectorize_new_chunks_to_db(chunks: list[Document]):
+    """Add new (non-duplicate) chunks to the vector database."""
+    db = load_db()
 
     chunks = assign_unique_chunk_ids(chunks)
     existing_ids = set(db.get(include=[])["ids"])
@@ -70,4 +66,4 @@ def add_new_chunks_to_chroma(chunks: list[Document]):
 def vectorization_pipeline():
     documents = load_pdfs_from_directory()
     chunks = split_documents_into_chunks(documents)
-    add_new_chunks_to_chroma(chunks)
+    add_and_vectorize_new_chunks_to_db(chunks)
