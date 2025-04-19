@@ -174,7 +174,7 @@ Question:
 ## 🧠 Future Enhancements
 
 - 🔁 Hybrid retrieval (BM25 + vector search)
-- 🌐 Web interface
+- 🌐 Web interface from PubMed
 - 📄 Summarization of multi-document answers
 - ⚗️ Domain-specific model fine-tuning
 - 🧬 Multi-modal inputs (e.g., images, figures)
