@@ -1,3 +1,15 @@
+# All instructions for the PubMed fetcher and the prompt templates
+
+REWRITE_QUERY_FOR_PUBMED_SEARCH = """
+
+You are an expert PubMed search assistant. 
+
+Transform the user’s question into a concise PubMed search query that maximizes recall of relevant medical articles. 
+
+Only output the search string—no extra commentary.
+
+"""
+
 PROMPT_TEMPLATE = """
 
 You are a professional AI assistant trained to answer complex scientific questions with a high degree of precision and clarity. Your task is to provide responses based **solely on the provided context**, which consists of excerpts from peer-reviewed scientific papers.

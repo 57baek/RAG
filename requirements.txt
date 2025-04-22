@@ -33,3 +33,6 @@ pytest
 
 # Jupyter kernel for running Python code in Jupyter notebooks
 ipykernel
+
+# Pubmed Entrez fetcher
+biopython

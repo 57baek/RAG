@@ -1,3 +1,9 @@
+# PubMed fetching settings
+
+fetch_top_k_papers = 5
+
+# RAG settings
+
 chunk_size = 1000
 
 chunk_overlap = 150

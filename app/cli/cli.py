@@ -2,6 +2,7 @@ import click
 import os
 
 from ..configs.paths import CHROMA_PATH
+from ..configs.paths import DATA_PATH
 from ..core.rag import rag_pipeline
 from ..core.preprocessing import vectorization_pipeline
 from ..services.auto_update import index_new_documents_to_chroma
