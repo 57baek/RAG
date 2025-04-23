@@ -11,6 +11,7 @@ import time
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 Entrez.email = os.getenv("NCBI_EMAIL")
