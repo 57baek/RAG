@@ -47,12 +47,17 @@ def rewrite_pubmed_query(QUERY: str) -> str:
 
 
 def get_pmcid_for_pmid(pmid: str) -> str | None:
+    """
+    Given a PubMed ID (PMID), find out if there’s a PMC ID (i.e. full-text open-access version).
+    """
     handle = Entrez.elink(dbfrom="pubmed", db="pmc", id=pmid)
     linksets = Entrez.read(handle)
     handle.close()
+
     for block in linksets[0].get("LinkSetDb", []):
         if block.get("DbTo", "").lower() == "pmc" and block.get("Link"):
             return block["Link"][0]["Id"]
+
     return None
 
 
@@ -94,7 +99,36 @@ def fetch_top_k_pmc_papers(query: str, k: int) -> list[tuple[str, str]]:
         # 3) advance the window
         retstart += batch
 
-        # be kind to NCBI servers
+        # Let's be kind to NCBI servers
         time.sleep(0.3)
 
     return collected[:k]
+
+def download_pmc_fulltext_xml(pmcid: str, out_path: Path) -> None:
+    try:
+        handle = Entrez.efetch(db="pmc", id=pmcid, rettype="xml", retmode="text")
+        xml_data = handle.read()
+        handle.close()
+
+        # Handle bytes if for some reason we get it
+        if isinstance(xml_data, bytes):
+            xml_data = xml_data.decode("utf-8")
+
+        if not xml_data.strip():
+            raise ValueError("Empty XML returned.")
+
+        out_path.write_text(xml_data, encoding="utf-8")
+        print(f"✅ XML saved to {out_path}")
+
+    except Exception as e:
+        print(f"❌ Failed to download XML for PMC{pmcid}: {e}")
+
+def download_xml(results):
+    for pmid, pmcid in results:
+        xml_path = Path(DATA_PATH) / f"{pmid}.xml"
+        if xml_path.exists():
+            print(f"📂 {xml_path.name} already exists, skipping.")
+            continue
+
+        print(f"⬇️ Downloading full text XML for PMC{pmcid}...")
+        download_pmc_fulltext_xml(pmcid, xml_path)
