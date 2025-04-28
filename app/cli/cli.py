@@ -34,6 +34,9 @@ def query(query_text):
     cleaned_query = rewrite_pubmed_query(query_text)
 
     pmcid_list = fetch_top_k_pmc_papers(cleaned_query)
+    if not pmcid_list:
+        print("❌ No matching full-text articles found for this query. Try simplifying your question!")
+        return
 
     download_xml(pmcid_list)
 
