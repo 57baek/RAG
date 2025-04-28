@@ -104,6 +104,7 @@ def fetch_top_k_pmc_papers(query: str, k: int) -> list[tuple[str, str]]:
 
     return collected[:k]
 
+
 def download_pmc_fulltext_xml(pmcid: str, out_path: Path) -> None:
     try:
         handle = Entrez.efetch(db="pmc", id=pmcid, rettype="xml", retmode="text")
@@ -122,6 +123,7 @@ def download_pmc_fulltext_xml(pmcid: str, out_path: Path) -> None:
 
     except Exception as e:
         print(f"❌ Failed to download XML for PMC{pmcid}: {e}")
+
 
 def download_xml(results):
     for pmid, pmcid in results:
