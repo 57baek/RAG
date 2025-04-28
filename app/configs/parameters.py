@@ -12,6 +12,6 @@ chunk_size = 1000
 
 chunk_overlap = 150
 
-top_k_relevant_documents = 10
+top_k_relevant_documents = 20
 
 cosine_similarity_value = 0.75
