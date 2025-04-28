@@ -1,9 +1,9 @@
 import os
 import json
 import hashlib
-from langchain_community.document_loaders import PyPDFDirectoryLoader
 
 from ..configs.paths import DATA_PATH, FILEINDEX_PATH
+from ..services.XMLDirectoryLoader import XMLDirectoryLoader
 from ..core import preprocessing
 
 
@@ -13,10 +13,10 @@ def generate_file_hash(filepath: str) -> str:
         return hashlib.md5(f.read()).hexdigest()
 
 
-def get_new_or_updated_pdfs() -> list[str]:
+def get_new_or_updated_xmls() -> list[str]:
     """
-    Compare current PDF files in DATA_PATH with previously indexed ones.
-    Returns a list of new or modified PDF filenames.
+    Compare current XML files in DATA_PATH with previously indexed ones.
+    Returns a list of new or modified XML filenames.
     """
     # Ensure the directory for the record file exists
     os.makedirs(os.path.dirname(FILEINDEX_PATH), exist_ok=True)
@@ -31,7 +31,7 @@ def get_new_or_updated_pdfs() -> list[str]:
     modified_files = []
 
     for filename in os.listdir(DATA_PATH):
-        if not filename.endswith(".pdf"):
+        if not filename.endswith(".xml"):
             continue
         full_path = os.path.join(DATA_PATH, filename)
         file_hash = generate_file_hash(full_path)
@@ -49,18 +49,18 @@ def get_new_or_updated_pdfs() -> list[str]:
 
 def index_new_documents_to_chroma():
     """
-    Check for new or updated PDFs, and index only those into Chroma.
+    Check for new or updated XMLs, and index only those into Chroma.
     """
-    updated_files = get_new_or_updated_pdfs()
+    updated_files = get_new_or_updated_xmls()
 
     if not updated_files:
-        print("✅ No new or modified PDFs found.")
+        print("✅ No new or modified XMLs found.")
         return
 
-    print(f"📂 PDFs to index: {updated_files}")
+    print(f"📂 XMLs to index: {updated_files}")
 
     # Load all docs, but keep only new/updated ones
-    loader = PyPDFDirectoryLoader(DATA_PATH)
+    loader = XMLDirectoryLoader(DATA_PATH)
     all_documents = loader.load()
 
     filtered_docs = [

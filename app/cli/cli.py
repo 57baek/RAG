@@ -24,6 +24,13 @@ def cli():
 @cli.command()
 @click.argument("query_text")
 def query(query_text):
+    # Check if DATA_PATH has any files (except .gitkeep)
+    data_files = [f for f in os.listdir(DATA_PATH) if f != ".gitkeep"]
+
+    if data_files:
+        print("⚠️ Data directory not empty. Resetting before fetching new papers...")
+        reset_database.reset_data_database()
+
     cleaned_query = rewrite_pubmed_query(query_text)
 
     pmcid_list = fetch_top_k_pmc_papers(cleaned_query)

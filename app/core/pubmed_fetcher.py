@@ -104,7 +104,7 @@ def fetch_top_k_pmc_papers(query: str) -> list[tuple[str, str]]:
         # 3) advance the window
         retstart += batch
 
-        # Let's be kind to NCBI servers
+        # Let's be a good citizen 🚥 and kind to NCBI servers
         time.sleep(sleep_time_for_each_fetching)
 
     return collected[:fetch_top_k_papers]

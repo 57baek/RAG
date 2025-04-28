@@ -1,16 +1,16 @@
 import os
-from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 
+from ..services.XMLDirectoryLoader import XMLDirectoryLoader
 from ..configs import parameters
 from ..configs.paths import DATA_PATH
 from ..configs.load_db import load_db_chroma
 
 
-def load_pdfs_from_directory() -> list[Document]:
-    """Load PDF documents from the data directory."""
-    loader = PyPDFDirectoryLoader(DATA_PATH)
+def load_xmls_from_directory() -> list[Document]:
+    """Load XML documents from the data directory."""
+    loader = XMLDirectoryLoader(DATA_PATH)
     return loader.load()
 
 
@@ -65,6 +65,6 @@ def add_and_vectorize_new_chunks_to_db(chunks: list[Document]):
 
 
 def vectorization_pipeline():
-    documents = load_pdfs_from_directory()
+    documents =load_xmls_from_directory()
     chunks = split_documents_into_chunks(documents)
     add_and_vectorize_new_chunks_to_db(chunks)

@@ -1,6 +1,6 @@
 # PubMed fetching settings
 
-fetch_top_k_papers = 5
+fetch_top_k_papers = 10
 
 fetch_batch_size = 20
 
@@ -12,6 +12,6 @@ chunk_size = 1000
 
 chunk_overlap = 150
 
-top_k_relevant_documents = 5
+top_k_relevant_documents = 10
 
 cosine_similarity_value = 0.75
