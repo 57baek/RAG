@@ -1,7 +1,32 @@
 import os
 import shutil
+from pathlib import Path
 
-from ..configs.paths import CHROMA_PATH, FEEDBACK_PATH, FILEINDEX_PATH
+from ..configs.paths import DATA_PATH, CHROMA_PATH, FEEDBACK_PATH, FILEINDEX_PATH
+
+
+def reset_data_database():
+    """
+    Delete all files in the paper DB directory except '.gitkeep'.
+    """
+    data_dir = Path(DATA_PATH)
+
+    if not data_dir.exists():
+        print("❗️ Paper DB directory does not exist. Skipping.")
+        return
+
+    deleted_any = False
+
+    for file in data_dir.iterdir():
+        if file.name != ".gitkeep" and file.is_file():
+            file.unlink()
+            print(f"🗑️ Deleted {file.name}")
+            deleted_any = True
+
+    if not deleted_any:
+        print("✅ Paper DB was already clean.")
+    else:
+        print("🧹 Paper DB cleaned successfully.")
 
 
 def reset_embedding_database():
@@ -41,6 +66,7 @@ def reset_all_databases():
     """
     Reset all databases by clearing both embedding and feedback databases.
     """
+    reset_data_database()
     reset_embedding_database()
     reset_feedback_database()
     reset_fileindex_database()

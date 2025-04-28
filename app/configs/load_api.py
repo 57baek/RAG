@@ -14,8 +14,7 @@ if not openai.api_key:
 Entrez.email = os.getenv("NCBI_EMAIL")
 if not Entrez.email:
     raise RuntimeError(
-        "❌ Missing NCBI_EMAIL in environment. "
-        "Set NCBI_EMAIL=your.email@institution.edu in your .env"
+        "❌ Missing NCBI_EMAIL in environment. Set NCBI_EMAIL=your.email@institution.edu in your .env"
     )
 
 Entrez.api_key = os.getenv("NCBI_API_KEY")

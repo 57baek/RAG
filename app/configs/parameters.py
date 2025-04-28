@@ -2,6 +2,10 @@
 
 fetch_top_k_papers = 5
 
+fetch_batch_size = 20
+
+sleep_time_for_each_fetching = 0.3
+
 # RAG settings
 
 chunk_size = 1000

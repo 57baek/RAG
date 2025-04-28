@@ -9,6 +9,9 @@ data/*
 # Except .gitkeep
 !data/.gitkeep
 
+# Test file
+test.ipynb
+
 # MacOS
 .DS_Store
 
