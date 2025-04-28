@@ -1,6 +1,7 @@
 # Project files
 chroma/
 feedback/
+fileindex/
 indexed_files.json
 
 # Ignore all files in data/
