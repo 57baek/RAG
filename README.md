@@ -243,7 +243,7 @@ It could make your queries *always* prefer the most recent papers. 🚀
 ## 🔐 License
 
 This project is fully open for academic, research, and educational purposes.  
-Feel free to **use, edit, remix, or extend**! 🎨🚀
+Feel free to **use, edit, remix, or extend**! 🎨🚀👩‍🎨
 
 **Always remember the ABC: Always Be Civil!**
 
