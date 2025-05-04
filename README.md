@@ -251,10 +251,11 @@ Please feel free to **use, edit, remix, or extend**! 🎨🚀👩‍🎨
 
 ## 🙏 Acknowledgements
 
-- Prof. Mark Turner at Case Western Reserve University
+- Prof. Mark Turner at Case Western Reserve University (CWRU)
 - Case Western Reserve University HPC Resources
 - Pixegami GitHub Resources
-- PubMed and NCBI
+- PubMed 
+- NCBI
 - OpenAI
 - Ollama
 - LangChain
