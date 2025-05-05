@@ -251,7 +251,7 @@ Please feel free to **use, edit, remix, or extend**! 🎨🚀👩‍🎨
 
 ## 🙏 Acknowledgements
 
-- Prof. Mark Turner at Case Western Reserve University (CWRU)
+- Prof. Mark Turner at Case Western Reserve University
 - Case Western Reserve University HPC Resources
 - Pixegami GitHub Resources
 - PubMed 
