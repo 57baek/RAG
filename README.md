@@ -137,11 +137,11 @@ python3 main.py feedback "Use bullet points and emojis for better clarity."
 ### Reset Databases:
 
 ```bash
-python3 main.py reset --all          # Reset everything
-python3 main.py reset --db           # Reset downloaded XMLs
-python3 main.py reset --em           # Reset Chroma vector DB
-python3 main.py reset --fb           # Reset feedback database
-python3 main.py reset --fi           # Reset file indexing
+python3 main.py reset --all         # Reset everything
+python3 main.py reset --db          # Reset downloaded XMLs
+python3 main.py reset --em          # Reset Chroma vector DB
+python3 main.py reset --fb          # Reset feedback database
+python3 main.py reset --fi          # Reset file indexing
 ```
 
 ---
